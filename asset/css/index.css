@@ -469,6 +469,8 @@
 body{
     background-color: #181818;
     color: white;
+    font-family: Oswald;
+    letter-spacing: 1;
 }
 
 .jumbotron{

@@ -10,14 +10,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <link rel="stylesheet" href="asset/css/index.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
-    
+    <link rel="stylesheet" href="asset/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 </head>
 <body>
     <header>
         <div class="jumbotron fx col jccenter colorGrey">
             <h1 class="display-4 txtAlignCenter">Convertir ma flotte en électrique</h1>
             <p class="lead txtAlignCenter">Faites des économies, passez à l'électrique !</p>
+            <div class="dropdown fx jccenter">
+                <div class="dropdown-menu percent50" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+          </div>
     </header>
     <section>
         <div id="test"></div>
@@ -47,21 +55,17 @@
                 let piePositionPatternY = heightBox * 0.20
 
         //Badge Score
-        
-                let scoreFrameWidth = widthBox * 0.22
-                let scoreFrameHeight = heightBox * 0.60
-                let scoreFramePositionX = widthBox * 0.42
-                let scoreFramePositionY = heightBox * 0.20
+
                 let scorePositionX = widthBox * 0.54
-                let scorePositionY = heightBox * 0.63
+                let scorePositionY = heightBox * 0.65
                 let badgeWidth = widthBox * 0.16
                 let badgeHeight = heightBox * 0.06
                 let badgePositionX = widthBox * 0.46
-                let badgePositionY = heightBox * 0.67
+                let badgePositionY = heightBox * 0.70
                 let badgeTextPositionX = widthBox * 0.54
-                let badgeTextPositionY = heightBox * 0.72
+                let badgeTextPositionY = heightBox * 0.75
                 let textPositionX = widthBox * 0.54
-                let textPositionY = heightBox * 0.76
+                let textPositionY = heightBox * 0.80
 
     
                 function drawCircle(circleHorizontalPosition, circleVerticalPosition, circleRadius, circleStrokeWidth, circleStroke, circleFill, backgroundColor, circleTitle, circleText, circleText2, circleText3) {
@@ -110,19 +114,19 @@
 
                 }
 
-                const fuelCar = drawCircle(fuelCarBoxCircleRadiusPositionX, boxCircleRadiusPositionY, boxCircleRadius, 3, "#FF3C33", "none", "181818", "Renault Captur", "Essence", "210 000km", "Année 2013") 
-                const electricCar = drawCircle(electricCarBoxCircleRadiusPositionX, boxCircleRadiusPositionY, boxCircleRadius, 3, "#C7FF33", "none", "181818", "Tesla Model S", "50 000€", "Autonomie : 505km", "")
+                const fuelCar = drawCircle(fuelCarBoxCircleRadiusPositionX, boxCircleRadiusPositionY, boxCircleRadius, 3, "orange", "none", "181818", "Renault Captur", "Essence", "210 000km", "Année 2013") 
+                const electricCar = drawCircle(electricCarBoxCircleRadiusPositionX, boxCircleRadiusPositionY, boxCircleRadius, 3, "green", "none", "181818", "Tesla Model S", "50 000€", "Autonomie : 505km", "")
 
-                function badge(rectHorizontalPosition, recVerticalPosition, rectWidth, rectHeight, rectStrokeWidth, rectStroke, rectFill, scoreHorizontalPosition, scoreVerticalPosition, score, scoreFill, scoreSize, rectHorizontalPosition2, recVerticalPosition2, rectWidth2, rectHeight2, rectStrokeWidth2, rectStroke2, rectFill2, titleHorizontalPosition2, titleVerticalPosition2, title2, titleFill2, titleSize2, textHorizontalPosition, textVerticalPosition, text, textFill, textSize){
+                function badge(rectHorizontalPosition, recVerticalPosition, rectWidth, rectHeight, rectStrokeWidth, rectStroke, rectFill, scoreHorizontalPosition, scoreVerticalPosition, score, scoreFill, scoreSize, recVerticalPosition2, rectHeight2, rectStrokeWidth2, rectStroke2, rectFill2, titleHorizontalPosition2, titleVerticalPosition2, title2, titleFill2, titleSize2, textHorizontalPosition, textVerticalPosition, text, textFill, textSize){
 
-                box.append("rect")
+                /*box.append("rect")
                     .attr("x", rectHorizontalPosition)
                     .attr("y", recVerticalPosition)
                     .attr("width", rectWidth)
                     .attr("height", rectHeight)
                     .style("stroke-width", rectStrokeWidth)
                     .style("stroke", rectStroke)
-                    .style("fill", rectFill)
+                    .style("fill", rectFill)*/
 
 
                 box.append("text")
@@ -134,9 +138,9 @@
                     .style("text-anchor", "middle")
 
                 box.append("rect")
-                    .attr("x", rectHorizontalPosition2)
+                    .attr("x", rectHorizontalPosition)
                     .attr("y", recVerticalPosition2)
-                    .attr("width", rectWidth2)
+                    .attr("width", rectWidth)
                     .attr("height", rectHeight2)
                     .style("stroke-width", rectStrokeWidth2)
                     .style("stroke", rectStroke2)
@@ -161,9 +165,8 @@
                     .style("text-anchor", "middle")
                 }
 
-                const badgeScore = badge(scoreFramePositionX, scoreFramePositionY, scoreFrameWidth, scoreFrameHeight,"3px", "none", "#323232", scorePositionX, scorePositionY, "Score : 85 / 100", "#C7FF33", "2em", badgePositionX, badgePositionY, badgeWidth, badgeHeight, "1px", "#C7FF33", "#C7FF33", badgeTextPositionX, badgeTextPositionY, "Gain de 2000€ / mois", "#323232", "2em", textPositionX, textPositionY, "Retour sur investissement : 36 mois", "grey", "1em")
+                const badgeScore = badge(badgePositionX, "17%", badgeWidth, "55%", "1px", "#181818", "#181818", scorePositionX, scorePositionY, "Score : 85 / 100", "green", "2em", badgePositionY, badgeHeight, "1px", "green", "green", badgeTextPositionX, badgeTextPositionY, "Gain de 2000€ / mois", "lightgrey", "2em", textPositionX, textPositionY, "Retour sur investissement : 36 mois", "grey", "1em")
 
-                
 
                 function pieChart(pieWidth, pieHeight, pieMargin, pieHorizontalPosition, pieVerticalPosition, pieColorUp, pieColorDown, pieStroke, pieStrokeWidth){
 
@@ -219,8 +222,8 @@
                             .style("opacity", 0.7)
                 }
 
-                const timePie = pieChart(pieWidthPattern, pieHeightPattern, 0, timePiePositionPatternX, piePositionPatternY, "#C7FF33", "#FF3C33", "2px")
-                const lengthPie = pieChart(pieWidthPattern, pieHeightPattern, 0, lengthPiePositionPatternX, piePositionPatternY, "#C7FF33", "#FF3C33", "2px")
+                const timePie = pieChart(pieWidthPattern, pieHeightPattern, 0, timePiePositionPatternX, piePositionPatternY, "#008000", "orange", "2px")
+                const lengthPie = pieChart(pieWidthPattern, pieHeightPattern, 0, lengthPiePositionPatternX, piePositionPatternY, "#008000", "orange", "2px")
 
                 
             </script>
