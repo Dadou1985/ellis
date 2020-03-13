@@ -630,3 +630,170 @@ const canvas = d3.select("#test").append("svg")
                     .style("opacity", 0.7)
     
                 
+
+
+                    const box = d3.select("#test").append("svg")
+                        .attr("width", "100%")
+                        .attr("height", "100%")
+                        .style("color", "white")
+    
+                function drawCircle(circleHorizontalPosition, circleVerticalPosition, circleRadius, circleStrokeWidth, circleStroke, circleFill, backgroundColor, circleTitle, circleText, circleText2, circleText3) {
+
+                    box.append("circle")
+                        .attr("cx", circleHorizontalPosition)
+                        .attr("cy", circleVerticalPosition)
+                        .attr("r", circleRadius)
+                        .style("stroke-width", circleStrokeWidth)
+                        .style("stroke", circleStroke)
+                        .style("fill", circleFill)
+    
+                    box.append("text")
+                        .attr("x", circleHorizontalPosition)
+                        .attr("y", circleVerticalPosition)
+                        .text(circleTitle)
+                        .attr("text-anchor", "middle")
+                        .style("fill", circleStroke)
+                        .style("font-size", "2em")
+                        
+                    /*svg.append("text")
+                        .attr("x", circleHorizontalPosition)
+                        .attr("y", circleVerticalPosition * 1.2)
+                        .text(circleText)
+                        .attr("text-anchor", "middle")
+                        .style("fill", circleStroke)
+                        .style("font-size", "2em")
+                    
+                    svg.append("text")
+                        .attr("x", circleHorizontalPosition)
+                        .attr("y", circleVerticalPosition * 1.4)
+                        .text(circleText2)
+                        .attr("text-anchor", "middle")
+                        .style("fill", circleStroke)
+                        .style("font-size", "2em")
+    
+                    svg.append("text")
+                        .attr("x", circleHorizontalPosition)
+                        .attr("y", circleVerticalPosition * 1.6)
+                        .text(circleText3)
+                        .attr("text-anchor", "middle")
+                        .style("fill", circleStroke)
+                        .style("font-size", "2em")*/
+
+
+                }
+
+                const fuelCar = drawCircle("15%", "50%", "15%", 3, "orange", "none", "181818", "Renault Captur", "Essence", "210 000km", "Année 2013") 
+                const electricCar = drawCircle("40%", "50%", "15%", 3, "green", "none", "181818", "Tesla Model S", "50 000€", "Autonomie de 505km", "")
+
+                /*const fuelCar = drawCircle("#test", "40%", 500, "white", "50%", "50%", "35%", 3, "blue", "none", "181818", "https://cdn.drivek.it/configurator-covermobile/cars/fr/500/RENAULT/CAPTUR/38975_SUV-5-DOORS/renault-captur-2019-mobile.jpg", "30%", "30%", "Renault Captur", "Essence", "210 000km", "Année 2013") 
+                const electricCar = drawCircle("#test", "40%", 500, "white", "50%", "250", "35%", 3, "green", "none", "181818", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ37m8X0Urzm4J30YgAKqwYWyfzZM99g76L-0XCRAoIH3oOh06n", "40%", "40%", "Tesla Model S", "50 000€", "Autonomie de 505km", "")
+*/
+
+                function badge(rectHorizontalPosition, recVerticalPosition, rectWidth, rectHeight, rectStrokeWidth, rectStroke, rectFill, scoreHorizontalPosition, scoreVerticalPosition, score, scoreFill, scoreSize, recVerticalPosition2, rectHeight2, rectStrokeWidth2, rectStroke2, rectFill2, titleHorizontalPosition2, titleVerticalPosition2, title2, titleFill2, titleSize2, textHorizontalPosition, textVerticalPosition, text, textFill, textSize){
+
+                /*box.append("rect")
+                    .attr("x", rectHorizontalPosition)
+                    .attr("y", recVerticalPosition)
+                    .attr("width", rectWidth)
+                    .attr("height", rectHeight)
+                    .style("stroke-width", rectStrokeWidth)
+                    .style("stroke", rectStroke)
+                    .style("fill", rectFill)*/
+
+
+                box.append("text")
+                    .attr("x", scoreHorizontalPosition)
+                    .attr("y", scoreVerticalPosition)
+                    .text(score)
+                    .style("fill", scoreFill)
+                    .style("font-size", scoreSize)
+                    .style("text-anchor", "middle")
+
+                box.append("rect")
+                    .attr("x", rectHorizontalPosition)
+                    .attr("y", recVerticalPosition2)
+                    .attr("width", rectWidth)
+                    .attr("height", rectHeight2)
+                    .style("stroke-width", rectStrokeWidth2)
+                    .style("stroke", rectStroke2)
+                    .style("fill", rectFill2)
+
+                box.append("text")
+                    .attr("x", titleHorizontalPosition2)
+                    .attr("y", titleVerticalPosition2)
+                    .text(title2)
+                    .attr("class", "badge badge-success")
+                    .style("fill", titleFill2)
+                    .style("font-size", titleSize2)
+                    .style("text-anchor", "middle")
+
+                box.append("text")
+                    .attr("x", textHorizontalPosition)
+                    .attr("y", textVerticalPosition)
+                    .text(text)
+                    .attr("class", "badge badge-success")
+                    .style("fill", textFill)
+                    .style("font-size", textSize)
+                    .style("text-anchor", "middle")
+                }
+
+                const badgeScore = badge("76%", "17%", "20%", "55%", "1px", "#181818", "#181818", "65%", "80%", "Score : 85 / 100", "grey", "3em", "72%", "10%", "1px", "green", "green", "86%", "79%", "Gain de 2000€/mois", "lightgrey", "2.5em", "86%", "85%", "Retour sur investissement : 36 mois", "grey", "1em")
+
+
+
+                function pieChart(pieWidth, pieHeight, pieMargin, pieHorizontalPosition, pieVerticalPosition, pieColorUp, pieColorDown, pieStroke, pieStrokeWidth){
+
+                        // set the dimensions and margins of the graph
+                        var width = pieWidth
+                        height = pieHeight
+                        margin = pieMargin
+                    
+                        // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+                        var radius = Math.min(pieWidth, pieHeight) / 2 - pieMargin
+                    
+                        // append the svg object to the div called 'my_dataviz'
+                        const svg = box.append("svg")
+                            .attr("x", pieHorizontalPosition)
+                            .attr("y", pieVerticalPosition)
+                            .append("g")
+                            .attr("transform", "translate(" + pieWidth / 2 + "," + pieHeight / 2 + ")")
+                    
+                        // Create dummy data
+                        var data = {a: 78, b: 22}
+                    
+                        // set the color scale
+                        var color = d3.scaleOrdinal()
+                            .domain(["a", "b"])
+                            .range([pieColorUp,pieColorDown]);
+                    
+                        // Compute the position of each group on the pie:
+                        var pie = d3.pie()
+                            .sort(null) // Do not sort group by size
+                            .value(function(d) {return d.value; })
+                        var data_ready = pie(d3.entries(data))
+                    
+                        // The arc generator
+                        var arc = d3.arc()
+                            .innerRadius(radius * 0)         // This is the size of the donut hole
+                            .outerRadius(radius * 0.8)
+                    
+                        // Another arc that won't be drawn. Just for labels positioning
+                        var outerArc = d3.arc()
+                            .innerRadius(radius * 0.9)
+                            .outerRadius(radius * 0.9)
+                    
+                        // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+                        svg
+                            .selectAll('allSlices')
+                            .data(data_ready)
+                            .enter()
+                            .append('path')
+                            .attr('d', arc)
+                            .attr('fill', function(d){ return(color(d.data.key)) })
+                            .attr("stroke", pieStroke)
+                            .style("stroke-width", pieStrokeWidth)
+                            .style("opacity", 0.7)
+                }
+
+                const timePie = pieChart(400, 350, 0, "54%", "15%", "#008000", "orange", "2px")
+                const lengthPie = pieChart(400, 350, 0, "75%", "15%", "#008000", "orange", "2px")

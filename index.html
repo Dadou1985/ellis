@@ -31,9 +31,41 @@
             <script>
 
                 const box = d3.select("#test").append("svg")
-                        .attr("width", "100%")
-                        .attr("height", "100%")
+                        .attr("width", 1300)
+                        .attr("height", 600)
                         .style("color", "white")
+
+                const widthBox = 2000
+                const heightBox = 600
+
+        //Cercles Véhicules
+
+                let fuelCarBoxCircleRadiusPositionX = heightBox * 0.31
+                let electricCarBoxCircleRadiusPositionX = heightBox
+                let boxCircleRadiusPositionY = heightBox * 0.50
+                let boxCircleRadius = heightBox * 0.30
+
+        //Pie Chart
+
+                let pieWidthPattern = widthBox * 0.45
+                let pieHeightPattern = heightBox * 0.40
+                let timePiePositionPatternX = widthBox * 0.25
+                let lengthPiePositionPatternX = widthBox * 0.36
+                let piePositionPatternY = heightBox * 0.20
+
+        //Badge Score
+
+                let scorePositionX = widthBox * 0.54
+                let scorePositionY = heightBox * 0.65
+                let badgeWidth = widthBox * 0.16
+                let badgeHeight = heightBox * 0.06
+                let badgePositionX = widthBox * 0.46
+                let badgePositionY = heightBox * 0.70
+                let badgeTextPositionX = widthBox * 0.54
+                let badgeTextPositionY = heightBox * 0.75
+                let textPositionX = widthBox * 0.54
+                let textPositionY = heightBox * 0.80
+
     
                 function drawCircle(circleHorizontalPosition, circleVerticalPosition, circleRadius, circleStrokeWidth, circleStroke, circleFill, backgroundColor, circleTitle, circleText, circleText2, circleText3) {
 
@@ -47,45 +79,42 @@
     
                     box.append("text")
                         .attr("x", circleHorizontalPosition)
-                        .attr("y", circleVerticalPosition)
+                        .attr("y", circleVerticalPosition * 0.8)
                         .text(circleTitle)
+                        .attr("class", "badge badge-success")
                         .attr("text-anchor", "middle")
                         .style("fill", circleStroke)
                         .style("font-size", "2em")
                         
-                    /*svg.append("text")
+                    box.append("text")
                         .attr("x", circleHorizontalPosition)
-                        .attr("y", circleVerticalPosition * 1.2)
+                        .attr("y", circleVerticalPosition)
                         .text(circleText)
                         .attr("text-anchor", "middle")
-                        .style("fill", circleStroke)
-                        .style("font-size", "2em")
+                        .style("fill", "grey")
+                        .style("font-size", "1.5em")
                     
-                    svg.append("text")
+                    box.append("text")
                         .attr("x", circleHorizontalPosition)
-                        .attr("y", circleVerticalPosition * 1.4)
+                        .attr("y", circleVerticalPosition * 1.2)
                         .text(circleText2)
                         .attr("text-anchor", "middle")
-                        .style("fill", circleStroke)
-                        .style("font-size", "2em")
+                        .style("fill", "grey")
+                        .style("font-size", "1.5em")
     
-                    svg.append("text")
+                    box.append("text")
                         .attr("x", circleHorizontalPosition)
-                        .attr("y", circleVerticalPosition * 1.6)
+                        .attr("y", circleVerticalPosition * 1.4)
                         .text(circleText3)
                         .attr("text-anchor", "middle")
-                        .style("fill", circleStroke)
-                        .style("font-size", "2em")*/
+                        .style("fill", "grey")
+                        .style("font-size", "1.5em")
 
 
                 }
 
-                const fuelCar = drawCircle("15%", "50%", "15%", 3, "orange", "none", "181818", "Renault Captur", "Essence", "210 000km", "Année 2013") 
-                const electricCar = drawCircle("40%", "50%", "15%", 3, "green", "none", "181818", "Tesla Model S", "50 000€", "Autonomie de 505km", "")
-
-                /*const fuelCar = drawCircle("#test", "40%", 500, "white", "50%", "50%", "35%", 3, "blue", "none", "181818", "https://cdn.drivek.it/configurator-covermobile/cars/fr/500/RENAULT/CAPTUR/38975_SUV-5-DOORS/renault-captur-2019-mobile.jpg", "30%", "30%", "Renault Captur", "Essence", "210 000km", "Année 2013") 
-                const electricCar = drawCircle("#test", "40%", 500, "white", "50%", "250", "35%", 3, "green", "none", "181818", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ37m8X0Urzm4J30YgAKqwYWyfzZM99g76L-0XCRAoIH3oOh06n", "40%", "40%", "Tesla Model S", "50 000€", "Autonomie de 505km", "")
-*/
+                const fuelCar = drawCircle(fuelCarBoxCircleRadiusPositionX, boxCircleRadiusPositionY, boxCircleRadius, 3, "orange", "none", "181818", "Renault Captur", "Essence", "210 000km", "Année 2013") 
+                const electricCar = drawCircle(electricCarBoxCircleRadiusPositionX, boxCircleRadiusPositionY, boxCircleRadius, 3, "green", "none", "181818", "Tesla Model S", "50 000€", "Autonomie : 505km", "")
 
                 function badge(rectHorizontalPosition, recVerticalPosition, rectWidth, rectHeight, rectStrokeWidth, rectStroke, rectFill, scoreHorizontalPosition, scoreVerticalPosition, score, scoreFill, scoreSize, recVerticalPosition2, rectHeight2, rectStrokeWidth2, rectStroke2, rectFill2, titleHorizontalPosition2, titleVerticalPosition2, title2, titleFill2, titleSize2, textHorizontalPosition, textVerticalPosition, text, textFill, textSize){
 
@@ -135,8 +164,7 @@
                     .style("text-anchor", "middle")
                 }
 
-                const badgeScore = badge("76%", "17%", "20%", "55%", "1px", "#181818", "#181818", "65%", "80%", "Score : 85 / 100", "grey", "3em", "72%", "10%", "1px", "green", "green", "86%", "79%", "Gain de 2000€/mois", "lightgrey", "2.5em", "86%", "85%", "Retour sur investissement : 36 mois", "grey", "1em")
-
+                const badgeScore = badge(badgePositionX, "17%", badgeWidth, "55%", "1px", "#181818", "#181818", scorePositionX, scorePositionY, "Score : 85 / 100", "green", "2em", badgePositionY, badgeHeight, "1px", "green", "green", badgeTextPositionX, badgeTextPositionY, "Gain de 2000€ / mois", "lightgrey", "2em", textPositionX, textPositionY, "Retour sur investissement : 36 mois", "grey", "1em")
 
 
                 function pieChart(pieWidth, pieHeight, pieMargin, pieHorizontalPosition, pieVerticalPosition, pieColorUp, pieColorDown, pieStroke, pieStrokeWidth){
@@ -193,8 +221,8 @@
                             .style("opacity", 0.7)
                 }
 
-                const timePie = pieChart(400, 350, 0, "54%", "15%", "#008000", "orange", "2px")
-                const lengthPie = pieChart(400, 350, 0, "75%", "15%", "#008000", "orange", "2px")
+                const timePie = pieChart(pieWidthPattern, pieHeightPattern, 0, timePiePositionPatternX, piePositionPatternY, "#008000", "orange", "2px")
+                const lengthPie = pieChart(pieWidthPattern, pieHeightPattern, 0, lengthPiePositionPatternX, piePositionPatternY, "#008000", "orange", "2px")
 
                 
             </script>
